@@ -1,0 +1,20 @@
+<mat-toolbar *ngIf="!clientDashboardService.isUserOnClientDashboard" style="width: 100%;" color="primary">
+    <mat-toolbar-row >
+
+        <div  fxHide.xs>
+
+        <button mat-button ><mat-icon>home</mat-icon></button>
+
+        <button mat-button [matMenuTriggerFor]="crmMenu">CRM</button>
+        </div>
+
+    </mat-toolbar-row >
+    <mat-menu #crmMenu="matMenu">
+        <button mat-menu-item >Case Status</button>
+        <button mat-menu-item (click)="clientDashboardClicked()">Client Dashboard</button>
+
+      </mat-menu>
+</mat-toolbar> 
+<router-outlet *ngIf="!clientDashboardService.isUserOnClientDashboard"></router-outlet>
+
+<app-client-dashboard *ngIf="clientDashboardService.isUserOnClientDashboard"></app-client-dashboard>
